@@ -6,11 +6,16 @@ bcrypt = Bcrypt(app)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('test.html')
 
 @app.route('/login_register')
 def login_register():
     return render_template('login.html')
+
+# Temp route
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
 
 @app.route('/register', methods=['POST'])
 def register():
