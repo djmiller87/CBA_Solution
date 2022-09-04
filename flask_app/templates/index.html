@@ -6,14 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CB Solution</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/welcome.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/index.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Arvo&family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <link rel=”stylesheet” href=”css/bootstrap.css”>
+    <link rel=”stylesheet” href=”css/bootstrap-responsive.css”>
 </head>
 
 <body>
-    <div id="container">
+    <div class="container" id="container">
         <div id="navbar">            
             <div class="navbuttons">
+                <a href="/dashboard" style="text-decoration: none;"><h4>Dashboard</h4></a>
                 <a href="/login_register" style="text-decoration: none;"><h4>Login/Create Account</h4></a>
             </div>
         </div>
@@ -22,20 +25,26 @@
                 <h3>Welcome to <span style="color: rgb(48, 158, 134);">CB_Solution</span>!</h3>
                 <h3>Match your business costs against the benfits with our business analysis model.</h3>
             </div>
-
-
         </div>
         <div class="welcome2">
-
+            <div class="indexbox">
+                <p>Build your Business Services Portfolio</p>
+            </div>            
         </div>
         <div class="welcome">
-
+            <div class="indexbox">
+                <p>Some Other Nonsense</p>
+            </div>
         </div>
         <div class="welcome3">
-
+            <div class="indexbox">
+                <p>Calculate your Work Load</p>
+            </div>
         </div>
         <div class="welcome">
-
+            <div class="indexbox">
+                <p>Some Other Nonsense About How Cool My App Is</p>
+            </div>
         </div>
 
     </div>

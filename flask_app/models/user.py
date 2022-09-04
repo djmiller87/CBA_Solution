@@ -1,16 +1,14 @@
 from flask_app.config.mysqlconnection import connectToMySQL
-from flask_app.controllers import users
+from flask_app.controllers import users, services
 from flask import flash
 import re
 
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 class User:
-    db_name = 'cb_solution'
+    db_name = 'cba_solution'
     def __init__(self, data):
         self.id = data['id']
-        self.first_name = data['first_name']
-        self.last_name = data['last_name']
-        self.business_name = data['last_name']
+        self.business_name = data['business_name']
         self.email = data['email']
         self.password = data['password']
         self.created_at = data['created_at']
@@ -18,7 +16,7 @@ class User:
 
     @classmethod
     def save(cls, data):
-        query = "INSERT INTO users (first_name, last_name,business_name, email, password, created_at, updated_at) VALUES (%(first_name)s, %(last_name)s, %(business_name)s, %(email)s, %(password)s, NOW(), NOW());"
+        query = "INSERT INTO users (business_name, email, password, created_at, updated_at) VALUES (%(business_name)s, %(email)s, %(password)s, NOW(), NOW());"
         results = connectToMySQL(cls.db_name).query_db(query, data)
         return results
 
@@ -52,21 +50,8 @@ class User:
     @staticmethod
     def validate_user(user):
         is_valid = True
-        fname = str(user['first_name'])
-        lname = str(user['last_name'])
+        bname = str(user['business_name'])
         user_in_db = User.get_by_email({'email': user['email']})
-        if len(user['first_name']) < 2:
-            flash("*First name must contain at least 2 characters!", 'register')
-            is_valid = False
-        if not fname.isalpha():
-            flash("*First name must be letters only!", 'register')
-            is_valid = False
-        if len(user['last_name']) < 2:
-            flash("*Last name must contain at least 2 characters!", 'register')
-            is_valid = False
-        if not lname.isalpha():
-            flash("*Last name must be letters only!", 'register')
-            is_valid = False
         if len(user['business_name']) < 2:
             flash("*Business name must contain at least 2 characters!", 'register')
             is_valid = False

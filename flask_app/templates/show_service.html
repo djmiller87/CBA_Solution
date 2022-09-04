@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <div id="navbar" class="navbar">
+            <div class="navbuttons" >
+                <a href="/dashboard/{{one_user.id}}" style="text-decoration: none;">Dashboard</a>
+                <a href="/new_service" style="text-decoration: none;">New Service</a>
+                <a href="/logout" style="text-decoration: none;">Logout</a>
+            </div>
+            <div>
+                <p>{{one_service.id}}</p>
+                <p>{{one_service.service_name}}</p>
+                <p>{{one_service.hours}}</p>
+                <p>{{one_service.price}}</p>
+                <p>{{one_service.business_cost}}</p>
+                <p>{{one_service.description}}</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

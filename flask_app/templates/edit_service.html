@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <div id="navbar" class="navbar">
+            <div class="navbuttons" >
+                <a href="/dashboard/{{one_user.id}}" style="text-decoration: none;">Dashboard</a> 
+                <a href="/services" style="text-decoration: none;">Services</a>
+                <a href="/logout" style="text-decoration: none;">Logout</a>
+            </div>
+        </div>
+        <div>
+            <p>{{one_service.id}}</p>
+            <form action="/update_service/{{one_service.id}}" method="post">
+                <input type="hidden" name="user_id" value="{{one_user.id}}">
+                <div>
+                    <label for="service_name">Service Name:</label>
+                    <input type="text" name="service_name" value="{{one_service.service_name}}">
+                </div>
+                <div>
+                    <label for="hours"> Hours to complete:</label>
+                    <input type="number"" name="hours" value="{{one_service.hours}}">
+                </div>
+                <div>
+                    <label for="price">Service Price:</label>
+                    <input type="number" name="price" value="{{one_service.price}}">
+                </div>
+                <div>
+                    <label for="business_cost">Business business_cost:</label>
+                    <input type="number" name="business_cost" value="{{one_service.business_cost}}">
+                </div>
+                <div>
+                    <label for="description">Description:</label>
+                    <input type="textarea" name="description" value="{{one_service.description}}">
+                </div>
+                <button type="submit">Submit</button>
+                {%with messages = get_flashed_messages()%}
+                    {%if messages %}
+                        {%for message in messages%}
+                            <p class="message">{{message}}</p>
+                        {%endfor %}
+                    {%endif %}
+                {%endwith %}
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>
