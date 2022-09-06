@@ -1,6 +1,6 @@
 from flask_app import app
 from flask import render_template, redirect, request, session, flash
-from flask_app.models import user, service
+from flask_app.models import user, service, order
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
@@ -46,16 +46,18 @@ def login():
 
 @app.route('/dashboard/<int:id>')
 def dashboard(id):
-    # data = {
-    #     'id' : session['user_id']
-    # }
     if session['user_id'] != id:
         return redirect('/')
-    # one_user = user.User.one_user_info(data)
-#     user_messages = message.Message.get_user_messages(data)
-#     all_users = user.User.get_all_users()
-#     sent_messages = message.Message.number_sent_messages(data)
-    return render_template('dashboard.html')
+    data = {
+        'id' : id
+    }
+    one_user = user.User.one_user_info(data)
+    gross = order.Order.gross_income(data)
+    costs = order.Order.business_costs(data)
+    worked_hours = order.Order.business_hours(data)
+    all_orders = order.Order.get_all_orders(data)
+    total_orders = len(all_orders)
+    return render_template('dashboard.html', all_orders = all_orders, gross = gross, costs = costs, worked_hours = worked_hours, one_user = one_user ,total_orders = total_orders)
 
 @app.route('/logout')
 def logout():

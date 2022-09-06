@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <div id="navbar" class="navbar">
+            <div class="navbuttons" >
+                <a href="/dashboard/{{session['user_id']}}" style="text-decoration: none;">Dashboard</a> 
+                <a href="/services" style="text-decoration: none;">Services</a>
+                <a href="/logout" style="text-decoration: none;">Logout</a>
+            </div>
+        </div>
+        <div>
+            <p>{{one_order.customer_name}}</p>
+            <p>{{one_order.service_name}}</p>
+            <p>{{one_order.date}}</p>
+            <p>{{one_order.notes}}</p>
+        </div>
+    </div>
+</body>
+</html>

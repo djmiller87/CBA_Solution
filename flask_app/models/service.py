@@ -13,6 +13,7 @@ class Service:
         self.description = data['description']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
+        self.user_id = data['user_id']
 
     @classmethod
     def save(cls, data):
@@ -36,8 +37,9 @@ class Service:
         results = connectToMySQL(cls.db_name).query_db(query, data)
         print(results)
         services = []
-        for service in results:
-            services.append(service)
+        if results:
+            for service in results:
+                services.append(service)
         print(services)
         return services
 

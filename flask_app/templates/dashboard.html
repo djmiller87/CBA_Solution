@@ -22,31 +22,31 @@
             <div class="totals d-flex">
                 <div>
                     <h4>Business Gross Income</h4>
-                    <p>$....</p>
+                    <p>${{gross}}</p>
                 </div>
                 <div>
                     <h4>Total Business Costs</h4>
-                    <p>$.....</p>
+                    <p>${{costs}}</p>
                 </div>
                 <div>
                     <h4>Business Net Income</h4>
-                    <p>$.....</p>
+                    <p>${{gross - costs}}</p>
                 </div>
                 <div>
                     <h4>Total Hours</h4>
-                    <p>....#Hours</p>
-                    <p>....#Work Days</p>
+                    <p>{{worked_hours}} Hours</p>
+                    <p>{{worked_hours/8}}Work Days</p>
                 </div>
                 <div>
                     <h4>Total Orders</h4>
-                    <p>.....#</p>
+                    <p>{{total_orders}}</p>
                 </div>
             </div>
             <div class="services">
                 <div class="d-flex justify-content-between">
-                    <h1>Business Orders</h1>
+                    <h1>{{one_user.business_name}} Orders</h1>
                     <div>
-                        <button class="btn btn-info text-dark">New Order</button>
+                        <button class="btn btn-info text-dark"><a href="/new_order">New Order</a></button>
                     </div>
                 </div>
                 <table class="table table-dark table-striped table-bordered">
@@ -60,13 +60,15 @@
                         </thead>
                     </tr>
                     <tbody style="letter-spacing: 1px;">
+                        {%for order in all_orders%}
                         <tr>
-                            <td>1.</td>
-                            <td>Mark Mathis</td>
-                            <td>Shoulder Mount</td>
-                            <td>09/03/22</td>
-                            <td><a href="/edit_order" class="ms-0">edit</a>|<a href="/delete"> delete</a></td>
+                            <td>{{order.id}}</td>
+                            <td>{{order.customer_name}}</td>
+                            <td>{{order.service_name}}</td>
+                            <td>{{order.date}}</td>
+                            <td><a href="/show_order/{{order.id}}">View</a>|<a href="/edit_order/{{order.id}}" class="ms-0">edit</a>|<a href="/delete_order/{{order.id}}"> delete</a></td>
                         </tr>
+                        {%endfor%}
                     </tbody>
                 </table>
             </div>

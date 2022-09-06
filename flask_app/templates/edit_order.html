@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBA Solution New Order</title>
+</head>
+<body>
+    <div id="container">
+        <div id="navbar" class="navbar">
+            <div class="navbuttons" >
+                <a href="/dashboard/{{session['user_id']}}" style="text-decoration: none;">Dashboard</a> 
+                <a href="/services" style="text-decoration: none;">Services</a>
+                <a href="/new_service" style="text-decoration: none;">New Service</a>
+                <a href="/logout" style="text-decoration: none;">Logout</a>
+            </div>
+        </div>
+        <div>
+            <form action="/update_order/{{one_order.id}}" method="post">
+                <input type="hidden" name="id" value="{{one_order.id}}">
+                <div>
+                    <label for="customer_name">Customer Name:</label>
+                    <input type="text" name="customer_name" value="{{one_order.customer_name}}">
+                </div>
+                <div>
+                    <label for="service_id">Select service ordered:</label>
+                    <select name="service_id">
+                        <option value="{{one_order.service_id}}">{{one_order.service_name}}</option>
+                        {%for service in all_services%}
+                            <option value="{{service.id}}">{{service.service_name}}</option>
+                        {%endfor%}
+                    </select>
+                </div>
+                <div>
+                    <label for="date"> Date:</label>
+                    <input type="date"" name="date" value="{{one_order.date}}">
+                </div>
+                <div>
+                    <label for="notes">Notes:</label>
+                    <input type="textarea" name="notes" value="{{one_order.notes}}">
+                </div>
+                <button type="submit">Submit</button>
+                {%with messages = get_flashed_messages()%}    
+                    {%if messages %}                            
+                        {%for message in messages%}           
+                            <p class="message">{{message}}</p>                   
+                        {%endfor %}
+                    {%endif %}
+                {%endwith %}
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>
