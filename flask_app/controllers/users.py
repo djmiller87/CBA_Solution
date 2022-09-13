@@ -35,7 +35,7 @@ def login():
     print(data)
     if not user_in_db:
         flash("*Invalid Email/Password", 'login')
-        return redirect('/')
+        return redirect('/login_register')
     if not bcrypt.check_password_hash(user_in_db.password, request.form['password']):
         flash("*Invalid Email/Password", 'login')
         return redirect('/login_register')
