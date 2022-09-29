@@ -29,7 +29,10 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" style="background-color: black;" id="navbarTogglerDemo3">
                 <ul class="navbar-nav me-auto mb-2 mb-xl-0">
-                    <li class="nav-item">
+                    <li class="nav-item d-flex justify-content-center">
+                        <a href="https://github.com/djmiller87/CBA_Solution" class="nav-link" style="color: rgb(47, 133, 130);">Project Info</a>
+                    </li>
+                    <li class="nav-item d-flex justify-content-center">
                         <a href="/" class="nav-link" style="color: rgb(47, 133, 130);">Home</a>
                     </li>
                 </ul>
@@ -59,6 +62,9 @@
                     {% endif %}
                 {% endwith %}
             </form>
+            <h5 class="pt-3 text-info" style="text-decoration:underline;">Test Drive Mock Account </h5>
+            <h6 class="text-info">Email: mockaccount@email.com</h6>
+            <h6 class="text-info">Password: Password#00</h6>
         </div>
         <div class="p-5 col-md-6 col-lg-24 col-xl-30 pt-3" style="color: rgb(93, 227, 205); background-color:rgba(0, 0, 0, 0.67);">
             <h2>Register (New User)</h2>
@@ -78,7 +84,7 @@
                 <div>
                     <label for="confirm_password">Confirm Password:</label>
                     <input class="form-control" type="password" name="confirm_password">
-                    <input class="submit btn-lg mt-3" type="submit" style="background-color: rgb(37, 165, 174); text-decoration:underline;">
+                    <input class="submit btn-lg mt-3 bg-info" type="submit">
                 </div>
                 {% with messages = get_flashed_messages(category_filter = ['register']) %}    
                     {% if messages %}                            
