@@ -17,13 +17,17 @@ How to use the application:
   services, the application calculates gross income, net income, business costs, hours/days worked, and total amount of orders.
 
 Functionality:
-●	Login and Registration with form validations for users.
-●	Application allows users to create, read, update, and delete services and orders.
-●	Integrated access control by securing passwords with Bcrypt and using Session to secure user-based functionality on web pages.
-●	Implemented a responsive and scalable application using Bootstrap and inline CSS to improve functionality across platforms. 
-●	Based on the accounts services data, business specific logistics for gross and net income, business' cost, work hours, and total orders are updated with 
+● Login and Registration with form validations for users.
+● Application allows users to create, read, update, and delete services and orders.
+● Integrated access control by securing passwords with Bcrypt and using Session to secure user-based functionality on web pages.
+● Implemented a responsive and scalable application using Bootstrap and inline CSS to improve functionality across platforms.
+● Based on the accounts services data, business specific logistics for gross and net income, business' cost, work hours, and total orders are updated with 
   each new order. Also, all logistics update with each order deletion.
-●	Accessible anywhere given AWS deployment.
+● Accessible anywhere given AWS deployment.
+
+
+
+
 
 
 
